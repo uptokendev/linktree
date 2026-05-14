@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://links.memewar.zone/sitemap.xml
+Sitemap: https://coms.memewar.zone/sitemap.xml

@@ -1,6 +1,6 @@
 # MemeWarzone Links
 
-Official MemeWarzone link hub for `links.memewar.zone`.
+Official MemeWarzone link hub for `coms.memewar.zone`.
 
 ## Links
 
@@ -70,5 +70,5 @@ The repo includes `netlify.toml`:
 Point the custom domain to the deployed Netlify site:
 
 ```txt
-links.memewar.zone
+coms.memewar.zone
 ```
