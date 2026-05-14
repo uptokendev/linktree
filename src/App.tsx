@@ -8,17 +8,7 @@ type LinkItem = {
   hotkey: string;
 };
 
-const heroLogoSources = [
-  "/assets/hero/logo.png",
-  "https://memewar.zone/assets/hero/logo.png",
-  "/assets/navbar-logo.png",
-  "https://memewar.zone/assets/navbar-logo.png",
-];
-
-const hudSources = [
-  "/assets/hero/orange_hud_true_transparent.png",
-  "https://memewar.zone/assets/hero/orange_hud_true_transparent.png",
-];
+const logoSources = ["/assets/navbar-logo.png", "https://memewar.zone/assets/navbar-logo.png"];
 
 const links: LinkItem[] = [
   {
@@ -65,20 +55,22 @@ function ExternalArrow() {
   );
 }
 
-function CyclingImage({ sources, alt, className }: { sources: string[]; alt: string; className: string }) {
+function BrandLogo() {
   const [sourceIndex, setSourceIndex] = useState(0);
   const [failed, setFailed] = useState(false);
 
-  if (failed) return null;
+  if (failed) {
+    return <div className="brand-fallback" aria-label="MemeWarzone">MemeWarzone</div>;
+  }
 
   return (
     <img
-      src={sources[sourceIndex]}
-      alt={alt}
-      className={className}
+      src={logoSources[sourceIndex]}
+      alt="MemeWarzone"
+      className="brand-logo"
       draggable={false}
       onError={() => {
-        if (sourceIndex < sources.length - 1) {
+        if (sourceIndex < logoSources.length - 1) {
           setSourceIndex((current) => current + 1);
           return;
         }
@@ -112,26 +104,15 @@ export default function App() {
   return (
     <main className="mwz-link-page">
       <div className="mwz-app-shell">
-        <section className="mwz-tactical-hero compact-hero" aria-label="MemeWarzone command banner">
-          <div className="mwz-tactical-hero__bg" />
-          <div className="mwz-tactical-hero__terminal mwz-tactical-hero__terminal--left" aria-hidden="true">
-            <div>MWZ TERMINAL</div>
-            <div>STATUS: OPERATIONAL</div>
-            <div>LINK: SECURE ▣</div>
-          </div>
-          <div className="mwz-tactical-hero__terminal mwz-tactical-hero__terminal--right" aria-hidden="true">
-            <div>OFFICIAL CHANNELS</div>
-            <strong>04 ONLINE</strong>
-            <div className="mwz-tactical-hero__pulse" />
-          </div>
-          <a href="https://memewar.zone" className="mwz-tactical-hero__center" aria-label="Open MemeWarzone website">
-            <CyclingImage sources={hudSources} alt="" className="mwz-tactical-hero__crosshair" />
-            <CyclingImage sources={heroLogoSources} alt="MemeWarzone" className="mwz-tactical-hero__logo" />
+        <header className="mwz-hud-frame topbar-lite" aria-label="MemeWarzone links header">
+          <a href="https://memewar.zone" className="brand-link" aria-label="Open MemeWarzone website">
+            <BrandLogo />
           </a>
-          <div className="mwz-tactical-hero__wave" aria-hidden="true" />
-          <div className="mwz-tactical-hero__scanlines" aria-hidden="true" />
-          <div className="mwz-tactical-hero__vignette" aria-hidden="true" />
-        </section>
+          <div className="topbar-status">
+            <span className="status-pip" />
+            <span>Links online</span>
+          </div>
+        </header>
 
         <section className="link-shell" aria-labelledby="links-title">
           <div className="mwz-hud-frame link-panel">
