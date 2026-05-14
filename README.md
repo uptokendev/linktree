@@ -30,6 +30,33 @@ The static production output is generated in:
 dist
 ```
 
+## Brand assets
+
+The page is styled to match the MemeBattles `dev` frontend HUD theme.
+
+Expected local asset paths:
+
+```txt
+public/assets/navbar-logo.png
+public/assets/background.png
+```
+
+Source assets in the main frontend repo:
+
+```txt
+uptokendev/MemeBattles
+frontend/public/assets/navbar-logo.png
+frontend/public/assets/background.png
+```
+
+Current behavior:
+
+- The logo first tries `/assets/navbar-logo.png`.
+- If that is missing, it falls back to `https://memewar.zone/assets/navbar-logo.png`.
+- The background uses `/assets/background.png`; if missing, the gradient/grid HUD background still renders.
+
+For a fully self-contained deployment, copy both asset files into this repo under `public/assets/`.
+
 ## Netlify
 
 The repo includes `netlify.toml`:
