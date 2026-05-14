@@ -138,7 +138,7 @@ export default function App() {
             </div>
 
             <footer className="link-footer">
-              <span>links.memewar.zone</span>
+              <span>coms.memewar.zone</span>
               <span className="mwz-orange">Official channels only</span>
             </footer>
           </div>
